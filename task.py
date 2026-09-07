@@ -1,29 +1,29 @@
 
 def read_command_line () :
 
-def read_fichier (nom_fichier) :
+def read_file (nom_file) :
 
 def add_task () :
 
-def change_task () :
+def modify_task () :
 
-def delete_task () :
+def rm_task () :
 
 def list_tasks () :
 
 
 
-nom_fichier, fonction = read_command_line ()
-tasks = read_fichier (nom_fichier)
+nom_file, fonction = read_command_line ()
+tasks = read_file (nom_file)
 
 if fonction == "add" :
     add_task ()
 
 elif fonction == "modify" :
-    change_task ()
+    modify_task ()
 
 elif fonction == "rm" :
-    delete_task ()
+    rm_task ()
 
 elif fonction == "show" :
     list_tasks ()
