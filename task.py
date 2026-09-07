@@ -1,5 +1,6 @@
 
 def read_command_line () :
+    
 
 def read_file (filename) :
     with open ('test.txt', "r") as f :
@@ -29,8 +30,6 @@ def rm_task (id, tasks) :
         print("ID not found.")
     else:
         print(f"Task removed: {deleted}")
-    
-    change_file ()
 
     return tasks
 
@@ -39,6 +38,12 @@ def list_tasks (tasks) :
     for t in tasks :
         print(f"- Task {t}: {tasks[t]}")
 
+def save_changes (tasks) :
+    with open ('test.txt', "w") as f :
+        for id, description in tasks.items() :
+            f.write(f"{id},{description}\n")
+
+
 filename, function, arguments = read_command_line ()
 tasks = read_file (filename)
 
@@ -46,13 +51,15 @@ if function == "add" :
     add_task ()
 
 elif function == "modify" :
-    modify_task ()
+    modify_task (arguments, tasks)
 
 elif function == "rm" :
-    rm_task ()
+    rm_task (arguments, tasks)
 
 elif function == "show" :
-    list_tasks ()
+    list_tasks (tasks)
 
 else :
     print ("Function not recognized. Please use 'add', 'modify', 'rm' or 'show'.")
+
+save_changes(tasks)

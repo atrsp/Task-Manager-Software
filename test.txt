@@ -1,0 +1,4 @@
+1, Aller à salle du sport
+2, Faire le codecamp
+3, Laver mes vetements
+4, Aller au Dellec
