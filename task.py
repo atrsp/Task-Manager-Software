@@ -19,14 +19,14 @@ tasks = read_fichier (nom_fichier)
 if fonction == "add" :
     add_task ()
 
-elif fonction == "change" :
+elif fonction == "modify" :
     change_task ()
 
-elif fonction == "delete" :
+elif fonction == "rm" :
     delete_task ()
 
-elif fonction == "list" :
+elif fonction == "show" :
     list_tasks ()
 
 else :
-    print ("Fonction non reconnue. Veuillez utiliser 'add', 'change', 'delete' ou 'list'.")
+    print ("Fonction non reconnue. Veuillez utiliser 'add', 'modify', 'rm' ou 'show'.")
