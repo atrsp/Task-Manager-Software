@@ -1,32 +1,58 @@
 
 def read_command_line () :
 
-def read_file (nom_file) :
+def read_file (filename) :
+    with open ('test.txt', "r") as f :
+        tasks = {}
+        for row in f :
+            id_str, description = row.strip().split(",")
+            tasks[int(id_str)] = description
+    return tasks
 
 def add_task () :
 
-def modify_task () :
+def modify_task (id, tasks) :
+    if id in tasks :
+        
+        tasks[id] = new_description
+        print(f"Task {id} modified.")
+    else :
+        print("ID not found.")
 
-def rm_task () :
+    #change_file ()
 
-def list_tasks () :
+    return tasks
 
+def rm_task (id, tasks) :
+    deleted = tasks.pop(id, None)
+    if deleted is None:
+        print("ID not found.")
+    else:
+        print(f"Task removed: {deleted}")
+    
+    change_file ()
 
+    return tasks
 
-nom_file, fonction = read_command_line ()
-tasks = read_file (nom_file)
+def list_tasks (tasks) :
+    print('List of tasks:')
+    for t in tasks :
+        print(f"- Task {t}: {tasks[t]}")
 
-if fonction == "add" :
+filename, function, arguments = read_command_line ()
+tasks = read_file (filename)
+
+if function == "add" :
     add_task ()
 
-elif fonction == "modify" :
+elif function == "modify" :
     modify_task ()
 
-elif fonction == "rm" :
+elif function == "rm" :
     rm_task ()
 
-elif fonction == "show" :
+elif function == "show" :
     list_tasks ()
 
 else :
-    print ("Fonction non reconnue. Veuillez utiliser 'add', 'modify', 'rm' ou 'show'.")
+    print ("Function not recognized. Please use 'add', 'modify', 'rm' or 'show'.")
