@@ -1,10 +1,3 @@
-import sys
-
-def read_command_line () :
-    filename = sys.argv[1]
-    function = sys.argv[2]
-    arguments = sys.argv[3:]
-    return filename, function, arguments
 
 def read_file (filename) :
     with open (filename, "r") as f :
@@ -38,7 +31,7 @@ def rm_task (id, tasks) :
 
     return tasks
 
-def list_tasks (tasks) :
+def show_task(tasks) :
     print('List of tasks:')
     print('+----+----------------+')
     print('| id | description |\n+----+----------------+')

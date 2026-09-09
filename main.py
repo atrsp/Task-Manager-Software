@@ -7,7 +7,15 @@ try :
     tasks = task.read_file(args.filename)
     if args.fonction == 'add':
         tasks = task.add_task(tasks, args.commentary)
-    elif args.fonction == ''
+
+    elif args.fonction == 'modify':
+        tasks = task.modify_task(args.id,tasks,args.commentary)
+
+    elif args.fonction == 'rm':
+        tasks = task.rm_task(args.id,tasks)
+
+    elif args.fonciton == 'show' :
+        tasks = task.show_task()
 
     task.save_changes(args.filename, tasks)
 
