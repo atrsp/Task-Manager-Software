@@ -8,11 +8,11 @@ def create_parser():
     parser_add.add_argument('commentary')
 
     parser_modify=subparsers.add_parser('modify')
-    parser_modify.add_argument('id')
+    parser_modify.add_argument('id',type=int)
     parser_modify.add_argument('commentary')
 
     parser_remove=subparsers.add_parser('rm')
-    parser_remove.add_argument('id')
+    parser_remove.add_argument('id',type=int)
 
     parser_show=subparsers.add_parser('show')
 
