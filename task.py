@@ -3,7 +3,7 @@ def read_file (filename) :
     with open (filename, "r") as f :
         tasks = {}
         for row in f :
-            id_str, description = row.strip().split(",")
+            id_str, description = row.strip().split(",",maxsplit=2)
             tasks[int(id_str)] = description
     return tasks
 

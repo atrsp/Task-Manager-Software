@@ -9,13 +9,13 @@ try :
         tasks = task.add_task(tasks, args.commentary)
 
     elif args.fonction == 'modify':
-        tasks = task.modify_task(args.id,tasks,args.commentary)
+        tasks = task.modify_task(int(args.id),tasks,args.commentary)
 
     elif args.fonction == 'rm':
-        tasks = task.rm_task(args.id,tasks)
+        tasks = task.rm_task(int(args.id),tasks)
 
-    elif args.fonciton == 'show' :
-        tasks = task.show_task()
+    elif args.fonction == 'show' :
+        task.show_task(tasks)
 
     task.save_changes(args.filename, tasks)
 
