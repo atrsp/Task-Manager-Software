@@ -7,7 +7,7 @@ try :
     tasks = task.read_file(args.filename)
     if args.fonction == 'add':
         tasks = task.add_task(tasks, args.commentary)
-    #elif args.fonction == ''
+    elif args.fonction == ''
 
     task.save_changes(args.filename, tasks)
 
