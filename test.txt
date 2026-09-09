@@ -1,4 +1,5 @@
-1, Aller à salle du sport
-2, Faire le codecamp
-3, Laver mes vetements
-4, Aller au Dellec
+1,Voyager
+2,Vivre
+4,Aimer
+5,Venir
+6,Manger
