@@ -7,13 +7,13 @@ def create_parser():
     parser_add=subparsers.add_parser('add')
     parser_add.add_argument('commentary')
 
-    parser_add=subparsers.modify('modify')
-    parser_add.add_argument('id')
-    parser_add.add_argument('commentary')
+    parser_modify=subparsers.add_parser('modify')
+    parser_modify.add_argument('id')
+    parser_modify.add_argument('commentary')
 
-    parser_add=subparsers.rm('rm')
-    parser_add.add_argument('id')
+    parser_remove=subparsers.add_parser('rm')
+    parser_remove.add_argument('id')
 
-    parser_add=subparsers.show('show')
+    parser_show=subparsers.add_parser('show')
 
     return parser
