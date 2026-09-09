@@ -50,26 +50,3 @@ def save_changes (filename, tasks) :
         for id, description in tasks.items() :
             f.write(f"{id},{description}\n")
 
-filename, function, arguments = read_command_line ()
-tasks = read_file (filename)
-
-if function == "add" :
-    description = arguments[0]
-    tasks = add_task (tasks, description)
-    
-elif function == "modify" :
-    id = int(arguments[0])
-    description = arguments[1]
-    tasks =modify_task (id, tasks, description)
-
-elif function == "rm" :
-    id = int(arguments[0])
-    tasks = rm_task (id, tasks)
-
-elif function == "show" :
-    list_tasks (tasks)
-
-else :
-    print ("Function not recognized. Please use 'add', 'modify', 'rm' or 'show'.")
-
-save_changes(filename, tasks)
