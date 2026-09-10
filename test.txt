@@ -1,7 +1,7 @@
-1,Voyager
-2,Vivre
-4,Aimer
-5,Venir
-6,Manger
-7,hi
-8,hi hi
+1,started,Voyager
+2,cancelled,Vivre
+4,suspended,Aimer
+5,completed,Venir
+6,completed,Manger
+7,suspended,hi
+8,cancelled,hi hi
