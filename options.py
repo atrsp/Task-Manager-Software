@@ -13,6 +13,12 @@ def create_parser():
     parser_modify.add_argument('commentary')
     parser_modify.add_argument('state')
 
+    parser_modify_commentary=subparsers.add_parser('modify_commentary')
+    parser_modify_commentary.add_argument('commentary')
+
+    parser_modify_state=subparsers.add_parser('modify_state')
+    parser_modify_state.add_argument('state')
+
     parser_remove=subparsers.add_parser('rm')
     parser_remove.add_argument('id',type=int)
 

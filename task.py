@@ -7,15 +7,15 @@ def read_file (filename) :
             tasks[int(id_str)] = description
     return tasks
 
-def add_task (tasks, description) :
+def add_task (tasks, description, state) :
     id = max(tasks.keys()) + 1 if tasks else 1
-    tasks[id] = description
-    print(f"Task added. Id: {id}, Description: {description}")
+    tasks[id] = (state, description)
+    print(f"Task added. Id: {id}, Description: {description}, State: {state}.")
     return tasks
 
-def modify_task (id, tasks, new_description) :
+def modify_task (id, tasks, new_description, new_state) :
     if id in tasks :
-        tasks[id] = new_description
+        tasks[id] = (new_state, new_description)
         print(f"Task {id} modified.")
     else :
         print("ID not found.")
@@ -41,5 +41,5 @@ def show_task(tasks) :
 def save_changes (filename, tasks) :
     with open (filename, "w") as f :
         for id, description in tasks.items() :
-            f.write(f"{id},{description}\n")
+            f.write(f"{id},{state},{description}\n")
 
