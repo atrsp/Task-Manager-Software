@@ -8,12 +8,14 @@ def read_file (filename) :
     return tasks
 
 def add_task (tasks, description, status) :
+    assert status in ['started', 'suspended', 'completed','cancelled'], f'{status} is not a status'
     id = max(tasks.keys()) + 1 if tasks else 1
     tasks[id] = (status, description)
     print(f"Task added. Id: {id}, Status: {status}, Description: {description}")
     return tasks
 
 def modify_task (id, tasks, new_description, status) :
+    assert status in ['started', 'suspended', 'completed','cancelled'], f'{status} is not a status'
     if id in tasks :
         tasks[id] = (status, new_description)
         print(f"Task {id} modified.")
