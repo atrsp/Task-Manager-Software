@@ -6,3 +6,4 @@
 7,suspended,hi
 8,cancelled,hi hi
 9,completed,pizza
+10,completed,travel
