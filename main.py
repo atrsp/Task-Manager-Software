@@ -11,6 +11,13 @@ try :
     elif args.fonction == 'modify':
         tasks = task.modify_task(args.id,tasks,args.commentary, args.state)
 
+    elif args.fonction == 'modify_commentary':
+        tasks = task.modify_task(args.id, tasks, args.commentary, tasks[args.id][0])
+
+    elif args.fonction == 'modify_state':
+        tasks = task.modify_task(args.id, tasks, tasks[args.id][1], args.state)
+        
+
     elif args.fonction == 'rm':
         tasks = task.rm_task(args.id,tasks)
 
