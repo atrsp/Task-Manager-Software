@@ -33,10 +33,10 @@ def rm_task (id, tasks) :
 
 def show_task(tasks) :
     print('List of tasks:')
-    print('+----+----------------+')
-    print('| id | status | description |\n+----+----------------+')
+    print('+----+--------+-------------+')
+    print('| id | status | description |\n+----+--------+-------------+')
     for t in tasks :
-        print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | \n+----+----------------+")
+        print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | \n+----+--------+-------------+")
 
 def save_changes (filename, tasks) :
     with open (filename, "w") as f :
