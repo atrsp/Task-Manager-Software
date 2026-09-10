@@ -63,3 +63,10 @@ def save_changes (filename, tasks) :
         for id, (status, description) in tasks.items() :
             f.write(f"{id},{status},{description}\n")
 
+
+def search_task(tasks, word):
+    filtered_tasks = {}
+    for id,(status, description) in tasks.items() :
+        if word in status or word in description :
+            filtered_tasks[id]=(status,description)
+    show_task(filtered_tasks)

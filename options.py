@@ -27,4 +27,7 @@ def create_parser():
 
     parser_show=subparsers.add_parser('show')
 
+    parser_search=subparsers.add_parser('search')
+    parser_search.add_argument('word')
+
     return parser

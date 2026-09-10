@@ -24,6 +24,10 @@ try :
     elif args.fonction == 'show' :
         task.show_task(tasks)
 
+    elif args.fonction == 'search':
+        task.search_task(tasks, args.word)
+
+    
     task.save_changes(args.filename, tasks)
 
 

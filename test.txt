@@ -1,6 +1,5 @@
 1,started,Voyager
 2,cancelled,viajar
-4,love,Aimer
 5,completed,Venir
 6,completed,Manger
 7,started,Empanada
