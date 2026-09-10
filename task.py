@@ -1,18 +1,30 @@
-import configuration
+import json
 
 def read_file (filename) :
     with open (filename, "r") as f :
-        tasks = {}
-        for row in f :
-            id_str, status, description = row.strip().split(",", maxsplit=3)
-            tasks[int(id_str)] = (status, description)
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+            tasks = {}
+            for row in f :
+                id_str, status, description = row.strip().split(",", maxsplit=3)
+                if status not in config['status'] :
+                    print(f'{status} is not a status. The task with id {id_str} will be erased.')
+                else:
+                    tasks[int(id_str)] = (status, description)
     return tasks
 
 def add_task (tasks, description, status) :
-    assert status in ['started', 'suspended', 'completed','cancelled'], f'{status} is not a status'
-    id = max(tasks.keys()) + 1 if tasks else 1
-    tasks[id] = (status, description)
-    print(f"Task added. Id: {id}, Status: {status}, Description: {description}")
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+
+        if status in config['status'] :
+            id = max(tasks.keys()) + 1 if tasks else 1
+            tasks[id] = (status, description)
+            print(f"Task added. Id: {id}, Status: {status}, Description: {description}")
+
+        else :
+            print(f'{status} is not a status. Use one the following: {config["status"]}')
+        
     return tasks
 
 def modify_task (id, tasks, new_description, status) :
