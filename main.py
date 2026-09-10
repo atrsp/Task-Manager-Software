@@ -6,16 +6,16 @@ args = create_parser().parse_args()
 try :
     tasks = task.read_file(args.filename)
     if args.fonction == 'add':
-        tasks = task.add_task(tasks, args.commentary, args.state )
+        tasks = task.add_task(tasks, args.description, args.status )
 
     elif args.fonction == 'modify':
-        tasks = task.modify_task(args.id,tasks,args.commentary, args.state)
+        tasks = task.modify_task(args.id,tasks,args.description, args.status)
 
-    elif args.fonction == 'modify_commentary':
-        tasks = task.modify_task(args.id, tasks, args.commentary, tasks[args.id][0])
+    elif args.fonction == 'modify_description':
+        tasks = task.modify_task(args.id, tasks, args.description, tasks[args.id][0])
 
-    elif args.fonction == 'modify_state':
-        tasks = task.modify_task(args.id, tasks, tasks[args.id][1], args.state)
+    elif args.fonction == 'modify_status':
+        tasks = task.modify_task(args.id, tasks, tasks[args.id][1], args.status)
         
 
     elif args.fonction == 'rm':
