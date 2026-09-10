@@ -1,4 +1,4 @@
 {
-    "status": ["started", "love", "completed", "cancelled"]
+    "status": ["started", "suspended", "completed", "cancelled"]
 
 }
