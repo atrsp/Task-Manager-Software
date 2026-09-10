@@ -1,9 +1,8 @@
 1,started,Voyager
-2,cancelled,Vivre
 4,suspended,Aimer
 5,completed,Venir
 6,completed,Manger
 7,suspended,hi
-8,cancelled,hi hi
 9,completed,pizza
 10,completed,travel
+11,half_completed,travel

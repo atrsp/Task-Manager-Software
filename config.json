@@ -1,4 +1,4 @@
 {
-    "status": ["started", "suspended", "completed", "cancelled"]
+    "status": ["started", "suspended", "completed", "cancelled", "half_completed"]
 
 }
