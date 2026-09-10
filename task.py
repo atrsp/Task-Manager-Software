@@ -28,10 +28,15 @@ def add_task (tasks, description, status) :
     return tasks
 
 def modify_task (id, tasks, new_description, status) :
-    assert status in ['started', 'suspended', 'completed','cancelled'], f'{status} is not a status'
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+        
     if id in tasks :
-        tasks[id] = (status, new_description)
-        print(f"Task {id} modified.")
+        if status not in config['status'] :
+            print(f'{status} is not a status. Use one the following: {config["status"]}')
+        else:
+            tasks[id] = (status, new_description)
+            print(f"Task {id} modified.")
     else :
         print("ID not found.")
 
