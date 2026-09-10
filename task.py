@@ -3,19 +3,19 @@ def read_file (filename) :
     with open (filename, "r") as f :
         tasks = {}
         for row in f :
-            id_str, description = row.strip().split(",",maxsplit=2)
-            tasks[int(id_str)] = description
+            id_str, status, description = row.strip().split(",", maxsplit=3)
+            tasks[int(id_str)] = (status, description)
     return tasks
 
-def add_task (tasks, description, state) :
+def add_task (tasks, description, status) :
     id = max(tasks.keys()) + 1 if tasks else 1
-    tasks[id] = (state, description)
-    print(f"Task added. Id: {id}, Description: {description}, State: {state}.")
+    tasks[id] = (status, description)
+    print(f"Task added. Id: {id}, Status: {status}, Description: {description}")
     return tasks
 
-def modify_task (id, tasks, new_description, new_state) :
+def modify_task (id, tasks, new_description, status) :
     if id in tasks :
-        tasks[id] = (new_state, new_description)
+        tasks[id] = (status, new_description)
         print(f"Task {id} modified.")
     else :
         print("ID not found.")
@@ -33,13 +33,13 @@ def rm_task (id, tasks) :
 
 def show_task(tasks) :
     print('List of tasks:')
-    print('+----+----------------+')
-    print('| id | description |\n+----+----------------+')
+    print('+----+--------+-------------+')
+    print('| id | status | description |\n+----+--------+-------------+')
     for t in tasks :
-        print(f"| {t} | {tasks[t]} |\n+----+----------------+")
+        print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | \n+----+--------+-------------+")
 
 def save_changes (filename, tasks) :
     with open (filename, "w") as f :
-        for id, description in tasks.items() :
-            f.write(f"{id},{state},{description}\n")
+        for id, (status, description) in tasks.items() :
+            f.write(f"{id},{status},{description}\n")
 
