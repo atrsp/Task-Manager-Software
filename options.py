@@ -20,20 +20,20 @@ def create_parser():
     parser_modify_description.add_argument('id',type=int)
     parser_modify_description.add_argument('description')
 
-    parser_modify_status=subparsers.add_parser('modify_status')
+    parser_modify_status=subparsers.add_parser('modify_status', description= "modify the status of the task with the given id")
     parser_modify_status.add_argument('id',type=int)
     parser_modify_status.add_argument('status')
 
-    parser_modify_context=subparsers.add_parser('modify_context')
+    parser_modify_context=subparsers.add_parser('modify_context', description= "modify the context of the task with the given id")
     parser_modify_context.add_argument('id',type=int)
     parser_modify_context.add_argument('context')
 
-    parser_remove=subparsers.add_parser('rm')
+    parser_remove=subparsers.add_parser('rm', description= "remove the task with the given id")
     parser_remove.add_argument('id',type=int)
 
-    parser_show=subparsers.add_parser('show', description='print the list of tasks in form of a table')
+    parser_show=subparsers.add_parser('show', description="print the list of tasks in form of a table")
 
-    parser_search=subparsers.add_parser('search')
+    parser_search=subparsers.add_parser('search',  description="shows the list of tasks containing the searched word in their status, context or description")
     parser_search.add_argument('word')
 
     return parser
