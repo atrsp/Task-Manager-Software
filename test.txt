@@ -7,4 +7,3 @@
 9,completed,eating,pizza
 10,completed,hobby,travel
 11,cancelled,hobby,badminton
-12,cancelled,�������'"",au revoir

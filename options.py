@@ -10,25 +10,25 @@ def create_parser():
     parser_add.add_argument('context')
     parser_add.add_argument('description')
 
-    parser_modify=subparsers.add_parser('modify', description= "modify the status, context and description of the task with the given id")
+    parser_modify=subparsers.add_parser('modify', description= "modify the status, context and description of the task with the given id, saves the former task in the history file")
     parser_modify.add_argument('id',type=int)
     parser_modify.add_argument('status')
     parser_modify.add_argument('context')
     parser_modify.add_argument('description')
 
-    parser_modify_description=subparsers.add_parser('modify_description', description= "modify the description of the task with the given id")
+    parser_modify_description=subparsers.add_parser('modify_description', description= "modify the description of the task with the given id, saves the former task in the history file")
     parser_modify_description.add_argument('id',type=int)
     parser_modify_description.add_argument('description')
 
-    parser_modify_status=subparsers.add_parser('modify_status', description= "modify the status of the task with the given id")
+    parser_modify_status=subparsers.add_parser('modify_status', description= "modify the status of the task with the given id, saves the former task in the history file")
     parser_modify_status.add_argument('id',type=int)
     parser_modify_status.add_argument('status')
 
-    parser_modify_context=subparsers.add_parser('modify_context', description= "modify the context of the task with the given id")
+    parser_modify_context=subparsers.add_parser('modify_context', description= "modify the context of the task with the given id, saves the former task in the history file")
     parser_modify_context.add_argument('id',type=int)
     parser_modify_context.add_argument('context')
 
-    parser_remove=subparsers.add_parser('rm', description= "remove the task with the given id")
+    parser_remove=subparsers.add_parser('rm', description= "remove the task with the given id and writes the line in the history file")
     parser_remove.add_argument('id',type=int)
 
     parser_show=subparsers.add_parser('show', description="print the list of tasks in form of a table")

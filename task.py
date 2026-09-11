@@ -93,6 +93,9 @@ def search_task(tasks, word):
     show_task(filtered_tasks)
 
 def save_history(tasks,id):
+    """
+    writes the task with the given id in the history.txt file keeps the id the task had in the dictionnary
+    """
     with open('history.txt', 'a') as f:
         status, context, description = tasks[id]
         f.write(f"{id},{status},{context},{description}\n")
