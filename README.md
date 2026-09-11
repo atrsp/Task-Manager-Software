@@ -18,9 +18,9 @@ Adds a new task to the task file.
 
 You can specify the task's:
 
-* Status
-* Context
-* Description
+* Status (cancelled, suspended, completed, etc)
+* Context (home, work, etc)
+* Description ('Go to the supermarket', 'Flight to Japan', etc)
 
 The program automatically assigns an ID to the task. The ID is the next integer after the current maximum task ID.
 
