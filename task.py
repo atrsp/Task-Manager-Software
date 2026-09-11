@@ -91,3 +91,7 @@ def search_task(tasks, word):
         if word in status or word in description or word in context :
             filtered_tasks[id]=(status, context,description)
     show_task(filtered_tasks)
+
+def save_history(tasks,id):
+    with open(history.txt, 'a') as f:
+        f.write(f"{id},{status},{context},{description}\n")
