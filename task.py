@@ -13,7 +13,7 @@ def read_file (filename) :
                     tasks[int(id_str)] = (status,context, description)
     return tasks
 
-def add_task (tasks, description, status) :
+def add_task (tasks, description, status, context) :
     """
     add a new task with it's status and description to the dictionnary of tasks given
     """
@@ -30,7 +30,7 @@ def add_task (tasks, description, status) :
         
     return tasks
 
-def modify_task (id, tasks, new_description, status) :
+def modify_task (id, tasks, new_description, status,context) :
     """
     mofify the description and status of the task with the given id in the given dictionnary of tasks
     """
