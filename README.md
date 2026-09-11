@@ -1,6 +1,6 @@
 # Task Manager Software
 
-A command-line task manager that allows you to add, modify, remove, search, and display tasks stored in a task file.
+A command-line task manager that allows you to add, modify, remove, search, and display tasks stored in a task file, while saving changes and deletions in a history file.
 > _Auteurs: Ana Tereza RIBEIRO SOARES PEREIRA, Léandre CORDIER, Thomas JULLIERE_
 
 
@@ -165,9 +165,10 @@ We also use **subparsers** to organize the different commands. Each action (`add
 
 ---
 
+
 ## File Organization
 
-The project is organized into three main Python files and one configuration file:
+The project is organized into three main Python files, one configuration file and two test files:
 
 ### `task.py`
 
@@ -194,3 +195,11 @@ This is the file executed from the command line.
 A configuration file containing the list of allowed task statuses.
 
 It determines which statuses can be used when creating or modifying tasks and is also used to validate the statuses already present in the task file.
+
+### `test.txt`
+
+It's the file where we storage our tasks and it's attributes for the tests. You can add your own tasks to test, just make sure you follow the comma (,) pattern.
+
+### `history.txt`
+
+This file saves a history of the functions modify and remove. Every use of either of theses functions adds a new line to the history file. 
