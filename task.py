@@ -65,10 +65,10 @@ def show_task(tasks) :
     print the list of tasks into a table
     """
     print('List of tasks:')
-    print('+----+--------+-------------+')
-    print('| id | status | description |\n+----+--------+-------------+')
+    print('+----+--------+---------+-------------+')
+    print('| id | status | context | description |\n+----+--------+---------+-------------+')
     for t in tasks :
-        print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | \n+----+--------+-------------+")
+        print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | {tasks[t][2]} |\n+----+--------+---------+-------------+")
 
 def save_changes (filename, tasks) :
     """
