@@ -4,7 +4,7 @@ def read_file (filename) :
     """
     read the file of the given name and returns its content in a dictionnary
     """
-    with open (filename, "r") as f :
+    with open (filename, "r", encoding='UTF-8') as f :
         with open('config.json', 'r') as config_file:
             config = json.load(config_file)
             tasks = {}
@@ -77,7 +77,7 @@ def save_changes (filename, tasks) :
     """
     writes the dictionnary of tasks given into the txt file
     """
-    with open (filename, "w") as f :
+    with open (filename, "w", encoding='UTF-8') as f :
         for id, (status,context, description) in tasks.items() :
             f.write(f"{id},{status},{context},{description}\n")
 
@@ -96,6 +96,6 @@ def save_history(tasks,id):
     """
     writes the task with the given id in the history.txt file keeps the id the task had in the dictionnary
     """
-    with open('history.txt', 'a') as f:
+    with open('history.txt', 'a', encoding='UTF-8') as f:
         status, context, description = tasks[id]
         f.write(f"{id},{status},{context},{description}\n")
