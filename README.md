@@ -1,7 +1,7 @@
 # Task Manager Software
 
 A command-line task manager that allows you to add, modify, remove, search, and display tasks stored in a task file.
-> _Auteurs: Ana Tereza RIBEIRO SOARES PEREIRA, Léandre , Thomas JULLIERE_
+> _Auteurs: Ana Tereza RIBEIRO SOARES PEREIRA, Léandre CORDIER, Thomas JULLIERE_
 
 
 ## How to Use
