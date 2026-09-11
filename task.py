@@ -6,14 +6,14 @@ def read_file (filename) :
             config = json.load(config_file)
             tasks = {}
             for row in f :
-                id_str, status, description = row.strip().split(",", maxsplit=3)
+                id_str, status, context,description = row.strip().split(",", maxsplit=4)
                 if status not in config['status'] :
                     print(f'{status} is not a status. The task with id {id_str} will be erased.')
                 else:
-                    tasks[int(id_str)] = (status, description)
+                    tasks[int(id_str)] = (status,context, description)
     return tasks
 
-def add_task (tasks, description, status) :
+def add_task (tasks, description, status, context) :
     """
     add a new task with it's status and description to the dictionnary of tasks given
     """
@@ -22,15 +22,15 @@ def add_task (tasks, description, status) :
 
         if status in config['status'] :
             id = max(tasks.keys()) + 1 if tasks else 1
-            tasks[id] = (status, description)
-            print(f"Task added. Id: {id}, Status: {status}, Description: {description}")
+            tasks[id] = (status,context, description)
+            print(f"Task added. Id: {id}, Status: {status}, Context :{context}, Description: {description}")
 
         else :
             print(f'{status} is not a status. Use one the following: {config["status"]}')
         
     return tasks
 
-def modify_task (id, tasks, new_description, status) :
+def modify_task (id, tasks, new_description, status,context) :
     """
     mofify the description and status of the task with the given id in the given dictionnary of tasks
     """
@@ -41,7 +41,7 @@ def modify_task (id, tasks, new_description, status) :
         if status not in config['status'] :
             print(f'{status} is not a status. Use one the following: {config["status"]}')
         else:
-            tasks[id] = (status, new_description)
+            tasks[id] = (status, context,new_description)
             print(f"Task {id} modified.")
     else :
         print("ID not found.")
@@ -75,8 +75,8 @@ def save_changes (filename, tasks) :
     writes the dictionnary of tasks given into the txt file
     """
     with open (filename, "w") as f :
-        for id, (status, description) in tasks.items() :
-            f.write(f"{id},{status},{description}\n")
+        for id, (status,context, description) in tasks.items() :
+            f.write(f"{id},{status},{context},{description}\n")
 
 
 def search_task(tasks, word):
@@ -84,7 +84,7 @@ def search_task(tasks, word):
     search for one string in the statuses and descriptons of the tasks dictionnary and shows the list of tasks containing the given string
     """
     filtered_tasks = {}
-    for id,(status, description) in tasks.items() :
-        if word in status or word in description :
-            filtered_tasks[id]=(status,description)
+    for id,(status, context, description) in tasks.items() :
+        if word in status or word in description or word in context :
+            filtered_tasks[id]=(status, context,description)
     show_task(filtered_tasks)
