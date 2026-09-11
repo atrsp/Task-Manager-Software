@@ -1,46 +1,196 @@
-# Task-Manager-Software
+# Task Manager Software
 
-## How it works
+A command-line task manager that allows you to add, modify, remove, search, and display tasks stored in a task file.
+> _Auteurs: Ana Tereza RIBEIRO SOARES PEREIRA, Léandre , Thomas JULLIERE_
 
-Our task manager works through the Command Line Interface (CLI). Each time the program is run, it reads the file that contains the tasks and executes 1 action. If you'd like to do another action, you need to run it again.
-We've implemented the following features:
+
+## How to Use
+
+The task manager is operated through the **Command Line Interface (CLI)**.
+
+Each time the program is executed, it reads the task file and performs **one action**. To perform another action, you must run the program again.
+
+The following operations are available:
 
 ### Add
-Adds a new Task to our tasks file. You can choose the status of the file, it's description and a context related to it. This function choses automatically an ID for the task.
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **add** status description
+Adds a new task to the task file.
+
+You can specify the task's:
+
+* Status
+* Context
+* Description
+
+The program automatically assigns an ID to the task. The ID is the next integer after the current maximum task ID.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json add 'status' 'context' 'description'
+```
+
+---
 
 ### Modify
-Verifies if the task you'd like to change exists and, if so, it modifies it's status and it's description. 
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **modify** id status description
+Modifies all the information associated with an existing task: its status, context, and description.
+
+The program first verifies that the specified task exists.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json modify id 'status' 'context' 'description'
+```
+
+---
+
+### Modify Context
+
+Modifies **only the context** of an existing task.
+
+The program first verifies that the specified task exists.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json modify id 'context'
+```
+
+---
 
 ### Modify Description
-Verifies if the task you'd like to change exists and, if so, it modifies ONLY it's description. 
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **modify_description** id description
+Modifies **only the description** of an existing task.
+
+The program first verifies that the specified task exists.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json modify_description id 'description'
+```
+
+---
 
 ### Modify Status
-Verifies if the task you'd like to change exists and, if so, it modifies ONLY it's status. 
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **modify_status** id status
+Modifies **only the status** of an existing task.
+
+The program first verifies that the specified task exists.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json modify_status id 'status'
+```
+
+---
 
 ### Remove
-Verifies if the task you'd like to remove exists and, if so, removes it from the task file.
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **rm** id
+Removes an existing task from the task file.
+
+The program first verifies that the specified task exists.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json rm id
+```
+
+---
 
 ### Show
-Lists all the tasks in the task file.
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **show**
+Displays all tasks stored in the task file, including their IDs, statuses, contexts, and descriptions.
+
+**Usage:**
+
+```bash
+python3 main.py task_file.json show
+```
+
+---
 
 ### Search
-Searches one string through the status, the description and the context and shows only the results in which the string appears.
 
-How to run: python3 name_of_code_file.py name_of_task_file.py **search** word
+Searches for a string in the **status, context, and description** of all tasks and displays only the tasks in which the string appears.
 
-### Configuration File
-It allows you to select which status are allowed to be inserted. If the task file contains any status that is not defined in the configuration file (config.json) it will automatically erase it. If you try to modify a status to a non-existing one, the program will not allow you. 
+**Usage:**
 
-How to use: Open the file config.json and add any possible status you'd like to define in our list of status (strings).
+```bash
+python3 main.py task_file.json search 'string'
+```
+
+---
+
+## Configuration
+
+The available task statuses can be configured through the `config.json` file.
+
+To add a new status, open `config.json` and add the desired status to the list of allowed statuses.
+
+The program uses this configuration in two situations:
+
+* If a task file contains a status that is not defined in `config.json`, that status is automatically removed.
+* If you attempt to create or modify a task using a status that is not defined in `config.json`, the operation will not be allowed.
+
+---
+
+## Data Structure
+
+Tasks are stored in a dictionary, with each task's **ID used as the key**.
+
+Each key is associated with a list containing the task's:
+
+1. Status
+2. Description
+3. Context
+
+This structure allows tasks to be identified and accessed through their unique IDs.
+
+---
+
+## CLI Parsing
+
+The project uses Python's `argparse` library to parse command-line arguments.
+
+`argparse` separates the different arguments provided through the command line, allowing the program to handle different commands and argument formats.
+
+This is essential because each operation requires a different number and type of arguments. For example, the `show` command does not require a task ID, while `modify` requires an ID, a status, a context, and a description.
+
+We also use **subparsers** to organize the different commands. Each action (`add`, `modify`, `show`, `search`, etc.) has its own subparser, which defines the arguments required for that specific operation.
+
+---
+
+## File Organization
+
+The project is organized into three main Python files and one configuration file:
+
+### `task.py`
+
+Implements the functions responsible for managing tasks.
+
+It contains the core operations used to add, modify, remove, search, and display tasks.
+
+### `options.py`
+
+Implements the command-line argument parsing using the `argparse` library.
+
+It defines the available commands and the arguments required for each operation.
+
+### `main.py`
+
+The main entry point of the program.
+
+It organizes the overall program flow and connects the command-line parser from `options.py` with the task-management functions from `task.py`.
+
+This is the file executed from the command line.
+
+### `config.json`
+
+A configuration file containing the list of allowed task statuses.
+
+It determines which statuses can be used when creating or modifying tasks and is also used to validate the statuses already present in the task file.
