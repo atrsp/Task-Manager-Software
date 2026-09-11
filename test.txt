@@ -1,9 +1,9 @@
-1,started,Voyager
-2,cancelled,viajar
-5,completed,Venir
-6,completed,Manger
-7,started,Empanada
-8,cancelled,hi hi
-9,completed,pizza
-10,completed,travel
-11,half_completed,travel
+1,started,hobby,Voyager
+2,cancelled,work,viajar
+5,completed,fun,Venir
+6,completed,living,Manger
+7,started,fun,Empanada
+8,cancelled,friendliness,hi hi
+9,completed,eating,pizza
+10,completed,hobby,travel
+11,cancelled,hobby,badminton

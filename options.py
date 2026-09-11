@@ -5,12 +5,12 @@ def create_parser():
     parser.add_argument('filename')
     subparsers=parser.add_subparsers(dest='fonction')
 
-    parser_add=subparsers.add_parser('add', description= "add a new task with it's status and description to the txt file of tasks")
+    parser_add=subparsers.add_parser('add', description= "add a new task with it's status, context and description to the txt file of tasks")
     parser_add.add_argument('status')
     parser_add.add_argument('context')
     parser_add.add_argument('description')
 
-    parser_modify=subparsers.add_parser('modify', description= "modify the status and description of the task with the given id")
+    parser_modify=subparsers.add_parser('modify', description= "modify the status, context and description of the task with the given id")
     parser_modify.add_argument('id',type=int)
     parser_modify.add_argument('status')
     parser_modify.add_argument('context')

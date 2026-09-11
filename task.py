@@ -1,6 +1,9 @@
 import json
 
 def read_file (filename) :
+    """
+    read the file of the given name and returns its content in a dictionnary
+    """
     with open (filename, "r") as f :
         with open('config.json', 'r') as config_file:
             config = json.load(config_file)
@@ -32,7 +35,7 @@ def add_task (tasks, description, status, context) :
 
 def modify_task (id, tasks, new_description, status,context) :
     """
-    mofify the description and status of the task with the given id in the given dictionnary of tasks
+    modify the description and status of the task with the given id in the given dictionnary of tasks
     """
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
