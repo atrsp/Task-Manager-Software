@@ -13,7 +13,10 @@ def read_file (filename) :
                     tasks[int(id_str)] = (status,context, description)
     return tasks
 
-def add_task (tasks, description, status,context) :
+def add_task (tasks, description, status) :
+    """
+    add a new task with it's status and description to the dictionnary of tasks given
+    """
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
 
@@ -27,7 +30,10 @@ def add_task (tasks, description, status,context) :
         
     return tasks
 
-def modify_task (id, tasks, new_description, status,context) :
+def modify_task (id, tasks, new_description, status) :
+    """
+    mofify the description and status of the task with the given id in the given dictionnary of tasks
+    """
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
         
@@ -43,6 +49,9 @@ def modify_task (id, tasks, new_description, status,context) :
     return tasks
 
 def rm_task (id, tasks) :
+    """
+    remove the task with the given id in the dictionnary of tasks
+    """
     deleted = tasks.pop(id)
     if deleted is None:
         print("ID not found.")
@@ -52,6 +61,9 @@ def rm_task (id, tasks) :
     return tasks
 
 def show_task(tasks) :
+    """
+    print the list of tasks into a table
+    """
     print('List of tasks:')
     print('+----+--------+-------------+')
     print('| id | status | description |\n+----+--------+-------------+')
@@ -59,12 +71,18 @@ def show_task(tasks) :
         print(f"| {t} | {tasks[t][0]} | {tasks[t][1]} | \n+----+--------+-------------+")
 
 def save_changes (filename, tasks) :
+    """
+    writes the dictionnary of tasks given into the txt file
+    """
     with open (filename, "w") as f :
         for id, (status,context, description) in tasks.items() :
             f.write(f"{id},{status},{context},{description}\n")
 
 
 def search_task(tasks, word):
+    """
+    search for one string in the statuses and descriptons of the tasks dictionnary and shows the list of tasks containing the given string
+    """
     filtered_tasks = {}
     for id,(status, context, description) in tasks.items() :
         if word in status or word in description or word in context :
