@@ -93,6 +93,7 @@ def search_task(tasks, word):
     show_task(filtered_tasks)
 
 def save_history(tasks,id):
-    with open(history.txt, 'a') as f:
+    with open('history.txt', 'a') as f:
+        print(tasks)
         status, context, description = tasks[id]
         f.write(f"{id},{status},{context},{description}\n")
